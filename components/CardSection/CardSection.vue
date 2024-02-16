@@ -2,16 +2,16 @@
     <div>
         <div :class="`flex flex-col  rounded-x bg-${card_section_color}  p-6  gap-6  h-[550px] w-[400px] overflow-y-auto `"
             @drop="onDrop($event, movie_status)" @dragenter.prevent @dragover.prevent>
-            <div class="flex flex-row justify-centre">
-                <p class="text-xl">Watch list</p>
+            <div class="flex flex-row justify-center">
+                <p class="text-xl">{{ card_section_heading }}</p>
             </div>
 
             <div v-for=" movie in movie_list"
-                :class="`flex flex-row justify-between  py-[5px] px-4 rounded-[4px] bg-${card_color} border border-[#F2F2F2] min-h-[100px] min-w-[300px]`"
+                :class="`flex flex-row justify-around items-center  py-[5px] px-4 rounded-[4px] bg-${card_color} border border-[#F2F2F2] min-h-[100px] min-w-[300px]`"
                 draggable="true" @dragstart="startDrag($event, movie)">
-                <div>
-                    <p class="text-lg">{{ movie.name }}</p>
-                    <p class="text-sm my-5">{{ movie.review }}</p>
+                <div class="flex flex-col justify-start gap-3">
+                    <p class="text-lg font-semibold">{{ movie.name }}</p>
+                    <p class="text-sm ">{{ movie.review }}</p>
                 </div>
                 <div>
                     <button
