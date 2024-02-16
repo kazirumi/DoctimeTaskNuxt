@@ -90,7 +90,8 @@
             </div>
         </div>
         <Modal v-if="showMovieModal" :showModal="showMovieModal" @submit="SubmitMovie" @close="closeDalog">
-            <input v-model="formData.name" class="form-input bg-slate-200 px-4 py-3 rounded min-w-[500px]  mx-5"
+            <h2 class="text-lg font-semibold leading-6  py-3 text-gray-900">Create Movie</h2>
+            <input v-model="formData.name" class="form-input bg-slate-200 px-4 py-3 rounded w-full "
                 placeholder="Enter Movie  Name"><br>
             <span v-for="error in v$.name.$errors" class="text-red-400 px-5">{{ error.$message }}</span>
         </Modal>
