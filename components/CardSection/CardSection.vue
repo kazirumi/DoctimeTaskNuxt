@@ -7,9 +7,9 @@
             </div>
 
             <div v-for=" movie in movie_list"
-                :class="`flex flex-row justify-between items-center  py-[5px] px-4 rounded-[4px] bg-${card_color} border border-[#F2F2F2] min-h-[100px] min-w-[300px]`"
+                :class="`flex flex-row justify-between items-center  py-[5px] px-4 rounded-[4px] bg-${card_color} border border-[#F2F2F2] min-h-[100px] min-w-[300px] gap-4`"
                 draggable="true" @dragstart="startDrag($event, movie)">
-                <div class="flex flex-col justify-start gap-3">
+                <div class="flex flex-col justify-start gap-3 truncate">
                     <p class="text-lg font-semibold">Name: {{ movie.name }}</p>
                     <p class="text-sm font-semibold">Review: {{ movie.review }}</p>
                 </div>
