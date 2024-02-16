@@ -4,7 +4,8 @@
         <div>
             <div class="flex flex-row justify-center pt-5">
 
-                <input class="form-input px-4 py-3 rounded min-w-[500px]  mx-5" placeholder="type something">
+                <input v-model="searchMovieBy" class="form-input px-4 py-3 rounded min-w-[500px]  mx-5"
+                    placeholder="type something">
                 <button type="submit" class=" bg-slate-100 min-w-[90px] hover:bg-slate-300 px-2">Search</button>
 
                 <button @click="() => { showMovieModal = true }" class="primary-btn px-4 rounded-xl mx-9 ">Add New</button>
@@ -105,6 +106,7 @@ import { useVuelidate } from '@vuelidate/core';
 
 let movie_status = ref({ WatchList: "WatchList", Watching: "Watching", Watched: "Watched" });
 let showMovieModal = ref(false);
+let searchMovieBy = ref("");
 
 const formData = reactive({
     name: '',
@@ -170,6 +172,15 @@ let closeDalog = () => {
 //     movie.status = status;
 // }
 
+let timer;
+watch(searchMovieBy, async (newValue, oldValue) => {
+    if (timer)
+        clearTimeout(timer);
+
+    timer = setTimeout(() => {
+        console.log(newValue);
+    }, 800);
+});
 
 
 </script>
