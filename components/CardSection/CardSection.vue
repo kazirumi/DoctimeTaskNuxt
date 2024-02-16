@@ -10,8 +10,8 @@
                 :class="`flex flex-row justify-around items-center  py-[5px] px-4 rounded-[4px] bg-${card_color} border border-[#F2F2F2] min-h-[100px] min-w-[300px]`"
                 draggable="true" @dragstart="startDrag($event, movie)">
                 <div class="flex flex-col justify-start gap-3">
-                    <p class="text-lg font-semibold">{{ movie.name }}</p>
-                    <p class="text-sm ">{{ movie.review }}</p>
+                    <p class="text-lg font-semibold">Name: {{ movie.name }}</p>
+                    <p class="text-sm ">Review: {{ movie.review }}</p>
                 </div>
                 <div>
                     <button
@@ -48,6 +48,10 @@ let props = defineProps({
     card_color: {
         type: String,
         default: "zinc-50"
+    },
+    card_section_heading: {
+        type: String,
+        default: "Watch List"
     },
 
 });

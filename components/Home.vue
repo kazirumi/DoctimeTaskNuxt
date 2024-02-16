@@ -10,15 +10,15 @@
                 <button @click="() => { showMovieModal = true }" class="primary-btn px-4 rounded-xl mx-9 ">Add New</button>
             </div>
             <div class=" flex flex-row justify-around  my-10 ">
-                <CardSection :movie_list="getFilteredList(movie_status.WatchList)" :movie_status="movie_status.WatchList"
-                    card_section_color="orange-300" card_color="zinc-50">
+                <CardSection card_section_heading="Watch List" :movie_list="getFilteredList(movie_status.WatchList)"
+                    :movie_status="movie_status.WatchList" card_section_color="orange-300" card_color="zinc-50">
                 </CardSection>
 
-                <CardSection :movie_list="getFilteredList(movie_status.Watching)" :movie_status="movie_status.Watching"
-                    card_section_color="sky-200" card_color="purple-500">
+                <CardSection card_section_heading="Watching" :movie_list="getFilteredList(movie_status.Watching)"
+                    :movie_status="movie_status.Watching" card_section_color="sky-200" card_color="purple-500">
                 </CardSection>
-                <CardSection :movie_list="getFilteredList(movie_status.Watched)" :movie_status="movie_status.Watched"
-                    card_section_color="green-500" card_color="slate-300">
+                <CardSection card_section_heading="Watched" :movie_list="getFilteredList(movie_status.Watched)"
+                    :movie_status="movie_status.Watched" card_section_color="green-500" card_color="slate-300">
                 </CardSection>
 
                 <!-- <div class="flex flex-col  rounded-x bg-orange-300  p-6  gap-6  h-[550px] w-[400px] overflow-y-auto "
