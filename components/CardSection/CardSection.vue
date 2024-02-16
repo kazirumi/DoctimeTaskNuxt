@@ -1,13 +1,13 @@
 <template>
     <div>
-        <div class="flex flex-col  rounded-x bg-orange-300  p-6  gap-6  h-[550px] w-[400px] overflow-y-auto "
-            @drop="onDrop($event, movie_status.WatchList)" @dragenter.prevent @dragover.prevent>
+        <div :class="`flex flex-col  rounded-x bg-${card_section_color}  p-6  gap-6  h-[550px] w-[400px] overflow-y-auto `"
+            @drop="onDrop($event, movie_status)" @dragenter.prevent @dragover.prevent>
             <div class="flex flex-row justify-centre">
                 <p class="text-xl">Watch list</p>
             </div>
 
-            <div v-for=" movie in store?.movies?.movie_list.filter(x => x.status == movie_status.WatchList)"
-                class="flex flex-row justify-between  py-[5px] px-4 rounded-[4px] bg-zinc-50 border border-[#F2F2F2] min-h-[100px] min-w-[300px]"
+            <div v-for=" movie in movie_list"
+                :class="`flex flex-row justify-between  py-[5px] px-4 rounded-[4px] bg-${card_color} border border-[#F2F2F2] min-h-[100px] min-w-[300px]`"
                 draggable="true" @dragstart="startDrag($event, movie)">
                 <div>
                     <p class="text-lg">{{ movie.name }}</p>
@@ -24,24 +24,49 @@
     </div>
 </template>
 <script setup>
+import { useMovieStore } from "../../store/movies";
+const store = {
+    movies: useMovieStore()
+}
+
 let props = defineProps({
-    is_open: {
-        type: Boolean,
-        default: false,
+    movie_list: {
+        type: Array,
+        default: [],
     },
     movie_status: {
         type: String,
-        default: "70vw",
+        default: "WatchList",
+        validator(value, props) {
+            return ["WatchList", "Watching", "Watched"].includes(value)
+        }
     },
-    title: {
+    card_section_color: {
         type: String,
-        default: "",
+        default: "orange-300"
     },
-    button: {
+    card_color: {
         type: String,
-        default: null
-    }
+        default: "zinc-50"
+    },
+
 });
+
+let startDrag = (event, item) => {
+    console.log(item);
+    event.dataTransfer.dropEffect = 'move';
+    event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData('itemID', item.id);
+
+}
+
+let onDrop = (event, status) => {
+    const itemId = event.dataTransfer.getData('itemID');
+    console.log('ondrop', status);
+
+    const movie = store?.movies?.movie_list.find(x => x.id == itemId);
+    movie.status = status;
+}
 
 </script>
 <style></style>

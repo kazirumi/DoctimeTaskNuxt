@@ -33,6 +33,8 @@ export const useMovieStore = defineStore("movies",{
     // },
   },
   getters: {
-    filtersList: state => state.filtersList,
+    getFilteredList: (state) => {
+      return (status) => state.movie_list.filter((movie) => movie.status === status);
+    },
   },
 })

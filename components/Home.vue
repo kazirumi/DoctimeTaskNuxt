@@ -10,7 +10,18 @@
                 <button @click="() => { showMovieModal = true }" class="primary-btn px-4 rounded-xl mx-9 ">Add New</button>
             </div>
             <div class=" flex flex-row justify-around  my-10 ">
-                <div class="flex flex-col  rounded-x bg-orange-300  p-6  gap-6  h-[550px] w-[400px] overflow-y-auto "
+                <CardSection :movie_list="getFilteredList(movie_status.WatchList)" :movie_status="movie_status.WatchList"
+                    card_section_color="orange-300" card_color="zinc-50">
+                </CardSection>
+
+                <CardSection :movie_list="getFilteredList(movie_status.Watching)" :movie_status="movie_status.Watching"
+                    card_section_color="sky-200" card_color="purple-500">
+                </CardSection>
+                <CardSection :movie_list="getFilteredList(movie_status.Watched)" :movie_status="movie_status.Watched"
+                    card_section_color="green-500" card_color="slate-300">
+                </CardSection>
+
+                <!-- <div class="flex flex-col  rounded-x bg-orange-300  p-6  gap-6  h-[550px] w-[400px] overflow-y-auto "
                     @drop="onDrop($event, movie_status.WatchList)" @dragenter.prevent @dragover.prevent>
                     <div class="flex flex-row justify-centre">
                         <p class="text-xl">Watch list</p>
@@ -74,7 +85,7 @@
 
                     </div>
 
-                </div>
+                </div> -->
 
             </div>
         </div>
@@ -106,11 +117,15 @@ const rules = computed(() => {
     };
 });
 
+
 const v$ = useVuelidate(rules, formData);
 
 const store = {
     movies: useMovieStore()
 }
+
+const { getFilteredList } = storeToRefs(store.movies)
+
 
 onMounted(async () => {
 
@@ -138,21 +153,21 @@ let closeDalog = () => {
     showMovieModal.value = false
 }
 
-let startDrag = (event, item) => {
-    console.log(item);
-    event.dataTransfer.dropEffect = 'move';
-    event.dataTransfer.effectAllowed = 'move';
-    event.dataTransfer.setData('itemID', item.id);
+// let startDrag = (event, item) => {
+//     console.log(item);
+//     event.dataTransfer.dropEffect = 'move';
+//     event.dataTransfer.effectAllowed = 'move';
+//     event.dataTransfer.setData('itemID', item.id);
 
-}
+// }
 
-let onDrop = (event, status) => {
-    const itemId = event.dataTransfer.getData('itemID');
-    console.log('ondrop', status);
+// let onDrop = (event, status) => {
+//     const itemId = event.dataTransfer.getData('itemID');
+//     console.log('ondrop', status);
 
-    const movie = store?.movies?.movie_list.find(x => x.id == itemId);
-    movie.status = status;
-}
+//     const movie = store?.movies?.movie_list.find(x => x.id == itemId);
+//     movie.status = status;
+// }
 
 
 
