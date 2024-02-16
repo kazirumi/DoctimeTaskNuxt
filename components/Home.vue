@@ -179,6 +179,7 @@ watch(searchMovieBy, async (newValue, oldValue) => {
 
     timer = setTimeout(() => {
         console.log(newValue);
+        store.movies.filterMovie(newValue);
     }, 800);
 });
 
