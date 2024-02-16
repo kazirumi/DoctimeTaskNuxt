@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .input {
+    @apply block rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6;
+  }
+
+  .primary-btn {
+    @apply rounded-md bg-primary px-3 py-1.5 text-base font-medium leading-6 text-white shadow-sm hover:bg-[#50bd7d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary whitespace-nowrap;
+  }
+
+  .secondary-btn {
+    @apply rounded-md bg-secondary px-3 py-1.5 text-base font-medium leading-6 text-gray-900 shadow-sm hover:bg-[#e1ffa0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary whitespace-nowrap;
+  }
+
+  .table-th {
+    @apply px-3 py-3.5 text-left text-sm font-semibold text-gray-900;
+  }
+
+  .table-td {
+    @apply whitespace-nowrap px-3 py-2 text-sm text-gray-600 font-medium;
+  }
+
+  .btn-group {
+    @apply isolate inline-flex rounded-md shadow-sm;
+  }
+
+  .btn-grouped-primary {
+    @apply relative inline-flex items-center bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-primary focus:z-10 transition-all duration-300;
+  }
+
+  .btn-grouped-primary:hover svg path {
+    @apply stroke-white;
+  }
+
+  .btn-grouped-primary svg path {
+    @apply transition-all duration-300;
+  }
+
+  .badge-red {
+    @apply inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10;
+  }
+
+  .badge-green {
+    @apply inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20;
+  }
+
+  .input[type='text']:disabled {
+    @apply bg-slate-100 text-slate-500 border-slate-200 shadow-none cursor-not-allowed;
+  }
+
+  button:disabled {
+    @apply opacity-60 cursor-not-allowed;
+  }
+
+  .primary-icon-btn {
+    @apply primary-btn flex flex-row justify-center items-center gap-2;
+  }
+}
+
+/* all side drawer menu and top navbar styles here */
+.clean-a {
+  @apply text-black no-underline;
+}
+
+.drawer-row {
+  @apply flex justify-start items-center h-[40px] cursor-pointer text-[16px] font-[400];
+}
+
+.drawer-row-selected {
+  @apply flex justify-start items-center h-[40px] cursor-pointer text-[16px] font-[400] bg-primary text-white rounded;
+}
+
+.row-if-selected {
+  @apply flex flex-row justify-center items-center gap-3 h-[40px] cursor-pointer font-[500] py-[3px] pr-0 pl-[15px];
+}
+
+.drawer-row-selected>.row-if-selected {
+  color: white
+}
+
+.drawer-row-selected>.row-if-selected>svg>path {
+  stroke: white;
+}
+
+.menu {
+  @apply font-[500] cursor-pointer ml-[20px] flex items-center;
+}
+
+.top-nav {
+  @apply h-[40px] w-[100%] flex justify-start items-center bg-white gap-3;
+}
+
+.required:after {
+  @apply content-['*'] ml-0.5 text-red-500
+}
