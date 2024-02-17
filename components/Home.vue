@@ -198,26 +198,6 @@ let SubmitMovieReview = async () => {
 
 }
 
-
-
-
-
-// let startDrag = (event, item) => {
-//     console.log(item);
-//     event.dataTransfer.dropEffect = 'move';
-//     event.dataTransfer.effectAllowed = 'move';
-//     event.dataTransfer.setData('itemID', item.id);
-
-// }
-
-// let onDrop = (event, status) => {
-//     const itemId = event.dataTransfer.getData('itemID');
-//     console.log('ondrop', status);
-
-//     const movie = store?.movies?.movie_list.find(x => x.id == itemId);
-//     movie.status = status;
-// }
-
 let timer;
 watch(searchMovieBy, async (newValue, oldValue) => {
     if (timer)
