@@ -12,84 +12,18 @@
 
             <div class=" flex flex-row justify-around  my-10 ">
                 <CardSection card_section_heading="Watch List" :movie_list="getFilteredList(movie_status.WatchList)"
-                    :movie_status="movie_status.WatchList" card_section_color="orange-300" card_color="zinc-50"
+                    :movie_status="movie_status.WatchList" card_section_color="bg-orange-300" card_color="bg-zinc-50"
                     @edit="openReviewEditModal">
                 </CardSection>
 
                 <CardSection card_section_heading="Watching" :movie_list="getFilteredList(movie_status.Watching)"
-                    :movie_status="movie_status.Watching" card_section_color="sky-200" card_color="purple-500"
+                    :movie_status="movie_status.Watching" card_section_color="bg-sky-200" card_color="bg-purple-500"
                     @edit="openReviewEditModal">
                 </CardSection>
                 <CardSection card_section_heading="Watched" :movie_list="getFilteredList(movie_status.Watched)"
-                    :movie_status="movie_status.Watched" card_section_color="green-500" card_color="slate-300"
+                    :movie_status="movie_status.Watched" card_section_color="bg-green-500" card_color="bg-slate-300"
                     @edit="openReviewEditModal">
                 </CardSection>
-
-                <!-- <div class="flex flex-col  rounded-x bg-orange-300  p-6  gap-6  h-[550px] w-[400px] overflow-y-auto "
-                    @drop="onDrop($event, movie_status.WatchList)" @dragenter.prevent @dragover.prevent>
-                    <div class="flex flex-row justify-centre">
-                        <p class="text-xl">Watch list</p>
-                    </div>
-
-                    <div v-for=" movie in store?.movies?.movie_list.filter(x => x.status == movie_status.WatchList)"
-                        class="flex flex-row justify-between  py-[5px] px-4 rounded-[4px] bg-zinc-50 border border-[#F2F2F2] min-h-[100px] min-w-[300px]"
-                        draggable="true" @dragstart="startDrag($event, movie)">
-                        <div>
-                            <p class="text-lg">{{ movie.name }}</p>
-                            <p class="text-sm my-5">{{ movie.review }}</p>
-                        </div>
-                        <div>
-                            <button
-                                class="bg-slate-900 text-white float-right rounded-[5px] w-10 my-7 hover:bg-slate-400">Edit</button>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="flex flex-col  rounded-x bg-sky-200  p-6  gap-6  h-[550px] w-[400px] overflow-y-auto "
-                    @drop="onDrop($event, movie_status.Watching)" @dragenter.prevent @dragover.prevent>
-                    <div class="flex flex-row justify-centre">
-                        <h1>Watching</h1>
-                    </div>
-
-                    <div v-for=" movie in store?.movies?.movie_list.filter(x => x.status == movie_status.Watching)"
-                        class="flex flex-row justify-between  py-[5px] px-4 rounded-[4px] bg-purple-500 border border-[#F2F2F2] min-h-[100px] min-w-[300px]"
-                        draggable="true" @dragstart="startDrag($event, movie)">
-                        <div>
-                            <h1>{{ movie.name }}</h1>
-                            <p class="my-5">{{ movie.review }}</p>
-                        </div>
-                        <div>
-                            <button
-                                class="bg-slate-900 text-white float-right rounded-[5px] w-10 my-7 hover:bg-slate-400">Edit</button>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="flex flex-col  rounded-x bg-green-500  p-6  gap-6  h-[550px] w-[400px] overflow-y-auto "
-                    @drop="onDrop($event, movie_status.Watched)" @dragenter.prevent @dragover.prevent>
-                    <div>
-                        <h1>Watched</h1>
-                    </div>
-
-                    <div v-for=" movie in store?.movies?.movie_list.filter(x => x.status == movie_status.Watched)"
-                        class="flex flex-row justify-between  py-[5px] px-4 rounded-[4px] bg-slate-300 border border-[#F2F2F2] min-h-[100px] min-w-[300px]"
-                        draggable="true" @dragstart="startDrag($event, movie)">
-                        <div>
-                            <h1>{{ movie.name }}</h1>
-                            <p class="my-5">{{ movie.review }}</p>
-                        </div>
-                        <div>
-                            <button
-                                class="bg-slate-900 text-white float-right rounded-[5px] w-10 my-7 hover:bg-slate-400">Edit</button>
-                        </div>
-
-                    </div>
-
-                </div> -->
 
             </div>
         </div>

@@ -1,13 +1,13 @@
 <template>
     <div>
-        <div :class="`flex flex-col  rounded-x bg-${card_section_color}  p-6  gap-6  h-[550px] w-[400px] overflow-y-auto `"
+        <div :class="`flex flex-col  rounded-x ${card_section_color}  p-6  gap-6  h-[550px] w-[400px] overflow-y-auto `"
             @drop="onDrop($event, movie_status)" @dragenter.prevent @dragover.prevent>
             <div class="flex flex-row justify-center">
                 <p class="text-xl">{{ card_section_heading }}</p>
             </div>
 
             <div v-for=" movie in movie_list"
-                :class="`flex flex-row justify-between items-center  py-[5px] px-4 rounded-[4px] bg-${card_color} border border-[#F2F2F2] min-h-[100px] min-w-[300px] gap-4`"
+                :class="`flex flex-row justify-between items-center  py-[5px] px-4 rounded-[4px] ${card_color} border border-[#F2F2F2] min-h-[100px] min-w-[300px] gap-4`"
                 draggable="true" @dragstart="startDrag($event, movie)">
                 <div class="flex flex-col justify-start gap-3 truncate">
                     <p class="text-lg font-semibold">Name: {{ movie.name }}</p>
@@ -44,11 +44,11 @@ let props = defineProps({
     },
     card_section_color: {
         type: String,
-        default: "orange-300"
+        default: " bg-orange-300"
     },
     card_color: {
         type: String,
-        default: "zinc-50"
+        default: "bg-zinc-50"
     },
     card_section_heading: {
         type: String,
