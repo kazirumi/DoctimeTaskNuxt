@@ -67,10 +67,10 @@ let startDrag = (event, item) => {
 
 let onDrop = (event, status) => {
     const itemId = event.dataTransfer.getData('itemID');
-    console.log('ondrop', status);
-
-    const movie = store?.movies?.movie_list.find(x => x.id == itemId);
-    movie.status = status;
+    console.log('ondrop', itemId);
+    store?.movies.changeMovieStatus(itemId, status);
+    // const movie = store?.movies?.movie_list.find(x => x.id == itemId);
+    // movie.status = status;
 }
 
 let editReviw = (movie) => {

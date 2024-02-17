@@ -3,7 +3,6 @@
 
         <div>
             <div class="flex flex-row justify-center pt-5">
-
                 <input v-model="searchMovieBy" class="form-input px-4 py-3 rounded min-w-[500px]  mx-5"
                     placeholder="type something">
                 <button type="submit" class=" bg-slate-100 min-w-[90px] hover:bg-slate-300 px-2">Search</button>
@@ -147,7 +146,19 @@ const { getFilteredList } = storeToRefs(store.movies)
 
 onMounted(async () => {
 
-    await store.movies.getAllMovies();
+    //local starage have the data or not
+    const data = localStorage.getItem("apiData");
+
+    if (!data) {
+        await store.movies.getAllMovies();
+    }
+    else {
+        store.movies.movie_list = JSON.parse(data);
+        store.movies.temp_movie_list = store.movies.movie_list;
+    }
+
+
+
 });
 
 let reset_movie_form = () => {
