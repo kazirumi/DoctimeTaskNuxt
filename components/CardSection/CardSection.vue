@@ -14,8 +14,8 @@
                     <p class="text-sm font-semibold">Review: {{ movie.review }}</p>
                 </div>
                 <div>
-                    <button
-                        class="bg-slate-900 text-white float-right rounded-[5px] w-10 my-7 hover:bg-slate-400">Edit</button>
+                    <button class="bg-slate-900 text-white float-right rounded-[5px] w-10 my-7 hover:bg-slate-400"
+                        @click="editReviw(movie)">Edit</button>
                 </div>
 
             </div>
@@ -28,6 +28,7 @@ import { useMovieStore } from "../../store/movies";
 const store = {
     movies: useMovieStore()
 }
+const emits = defineEmits(["edit"]);
 
 let props = defineProps({
     movie_list: {
@@ -70,6 +71,10 @@ let onDrop = (event, status) => {
 
     const movie = store?.movies?.movie_list.find(x => x.id == itemId);
     movie.status = status;
+}
+
+let editReviw = (movie) => {
+    emits("edit", movie);
 }
 
 </script>
