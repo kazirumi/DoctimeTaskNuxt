@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <div>
             <div class="flex flex-row justify-center pt-5">
                 <input v-model="searchMovieBy" class="form-input px-4 py-3 rounded min-w-[500px]  mx-5"
@@ -24,7 +23,6 @@
                     :movie_status="movie_status.Watched" card_section_color="bg-green-500" card_color="bg-slate-300"
                     @edit="openReviewEditModal">
                 </CardSection>
-
             </div>
         </div>
         <Modal v-if="showMovieModal" :showModal="showMovieModal" @submit="SubmitMovie" @close="closeDalog">
@@ -90,9 +88,6 @@ onMounted(async () => {
         store.movies.movie_list = JSON.parse(data);
         store.movies.temp_movie_list = store.movies.movie_list;
     }
-
-
-
 });
 
 let reset_movie_form = () => {
@@ -116,7 +111,7 @@ let closeReviewDalog = () => {
 
 let SubmitMovie = async () => {
     await v$.value.name.$validate();
-    console.log(!v$.value.name.$error);
+
     if (!v$.value.name.$error) {
         store.movies.saveMovie(formData.name);
         reset_movie_form();
@@ -126,7 +121,6 @@ let SubmitMovie = async () => {
 }
 
 let openReviewEditModal = (movie) => {
-    console.log(movie);
     formData.id = movie.id;
     formData.review = movie.review;
     showMovieReviewModal.value = true;
@@ -134,7 +128,6 @@ let openReviewEditModal = (movie) => {
 
 let SubmitMovieReview = async () => {
     await v$.value.review.$validate();
-    console.log(!v$.value.review.$error);
     if (!v$.value.review.$error) {
         store.movies.saveOrEditMovieReview(formData.id, formData.review);
         reset_movie_form();
@@ -149,7 +142,6 @@ watch(searchMovieBy, async (newValue, oldValue) => {
         clearTimeout(timer);
 
     timer = setTimeout(() => {
-        console.log(newValue);
         store.movies.filterMovie(newValue);
     }, 800);
 });

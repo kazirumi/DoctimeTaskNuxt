@@ -43,8 +43,7 @@ export const useMovieStore = defineStore("movies",{
         this.movie_list=this.temp_movie_list;
         return;
       }
-      
-
+  
       this.movie_list=this.temp_movie_list.filter(movie => movie.name.toLowerCase().includes(movie_name.toLowerCase()));
     },
 

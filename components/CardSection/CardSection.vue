@@ -17,7 +17,6 @@
                     <button class="bg-slate-900 text-white float-right rounded-[5px] w-10 my-7 hover:bg-slate-400"
                         @click="editReviw(movie)">Edit</button>
                 </div>
-
             </div>
 
         </div>
@@ -58,7 +57,6 @@ let props = defineProps({
 });
 
 let startDrag = (event, item) => {
-    console.log(item);
     event.dataTransfer.dropEffect = 'move';
     event.dataTransfer.effectAllowed = 'move';
     event.dataTransfer.setData('itemID', item.id);
@@ -67,10 +65,8 @@ let startDrag = (event, item) => {
 
 let onDrop = (event, status) => {
     const itemId = event.dataTransfer.getData('itemID');
-    console.log('ondrop', itemId);
     store?.movies.changeMovieStatus(itemId, status);
-    // const movie = store?.movies?.movie_list.find(x => x.id == itemId);
-    // movie.status = status;
+
 }
 
 let editReviw = (movie) => {
